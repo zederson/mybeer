@@ -11,15 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130524020923) do
+ActiveRecord::Schema.define(version: 20130529211847) do
 
-  create_table "users", force: true do |t|
-    t.string   "name",             limit: 150
-    t.string   "email",            limit: 50
-    t.string   "password_encript"
-    t.string   "key"
+  create_table "beers", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "style"
+    t.string   "brewery"
+    t.string   "location"
+    t.string   "color"
+    t.string   "alcohol"
+    t.string   "foam"
+    t.string   "aroma"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "name",            limit: 150
+    t.string   "email",           limit: 50
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

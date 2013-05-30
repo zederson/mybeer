@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%=@beer.name %></h3>
+
+  <fieldset>
+    <div class="actions">
+      <table>
+        <tbody>
+          <tr>
+            <TD><%=@beer.style %></TD>
+            <TD><%=@beer.brewery %></TD>
+            <TD><%=@beer.location %></TD>
+            <TD><%=@beer.color %></TD>
+            <TD><%=@beer.alcohol %></TD>
+            <TD><%=@beer.foam %></TD>
+            <TD><%=@beer.aroma %></TD>
+            <TD><%=@beer.description %></TD>
+        </tbody>
+      </table>
+      <%= f.submit %>
+    </div>
+  </fieldset>
+
+<%= link_to 'Edit', edit_beer_path(@user) %> |
+<%= link_to 'Back', beers_path %>
