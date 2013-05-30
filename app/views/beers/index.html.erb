@@ -1,14 +1,18 @@
-<h1>Cervejas</h1>
+<h1><%= t('.title')%></h1>
 
 <table>
   <tbody>
     <% @beers.each do |beer| %>
       <tr>
-        <td><%= beer.name %></td>
-        <td ><%= beer.style %></td>
-        <td><%= link_to 'Show', beer %></td>
-        <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-        <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <ul>
+            <li><%= beer.name %></li>
+            <li><%= beer.style %></li>
+          </ul>
+        </td>
+        <td><%= link_to t('links.show'), beer %></td>
+        <td><%= link_to t('links.edit'), edit_beer_path(beer) %></td>
+        <td><%= link_to t('links.destroy'), beer, method: :delete, data: { confirm: t('links.question_destroy') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -16,4 +20,4 @@
 
 <br>
 
-<%= link_to 'New Beer', new_beer_path %>
+<%= link_to t('.new'), new_beer_path %>

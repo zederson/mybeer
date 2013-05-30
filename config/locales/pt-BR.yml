@@ -1,0 +1,49 @@
+pt-BR:
+  users:
+    new:
+      title: Cadastro de Usuário
+    index:
+      title: Usuários
+      new: Novo Usuário
+    edit:
+      title: Alterar Usuário
+
+  beers:
+    new:
+      title: Cadastro de Cerveja
+    index:
+      title: Cervejas
+      new: Nova Cerveja
+    edit:
+      title: Alterar Cerveja
+
+  links:
+    back: Voltar
+    edit: Editar
+    show: Ver
+    destroy: Excluir
+    question_destroy: Tem Certeza Que Deseja Excluir ?
+  errors:
+    message: Encontrados. Favor Corrigir !!!
+    error: Erro
+
+  activerecord:
+    models:
+      beer: Cerveja
+      user: Usuário
+    attributes:
+      user:
+        email: Email
+        name: Nome
+        password: Senha
+        password_confirmation: Confirme sua senha
+      beer:
+        name: Nome
+        description: Descrição
+        style: Estilo
+        brewery: Cervejaria
+        location: Localização
+        color: Coloração
+        alcohol: Álcool
+        foam: Espuma
+        aroma: Aroma

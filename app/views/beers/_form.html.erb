@@ -1,57 +1,53 @@
 <%= form_for(@beer) do |f| %>
-  <% if @beer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
 
-      <ul>
-      <% @beer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= show_errors_tag @beer %>
 
   <fieldset>
     <div class="actions">
       <table>
         <tbody>
           <tr>
-            <TD><%=f.label :name %>:</TD>
-            <TD><%=f.text_field :name %></TD>
+            <TD><%=f.label :name %></TD>
+            <TD>
+              <%=f.text_field :name %>
+              <%= error_tag @beer, :name %>
+            </TD>
           </tr>
           <tr>
-            <TD><%=f.label :style %>:</TD>
-            <TD><%=f.text_field :style %></TD>
+            <TD><%=f.label :style %></TD>
+            <TD>
+              <%=f.text_field :style %>
+              <%= error_tag @beer, :style %>
+            </TD>
           </tr>
           <tr>
-            <TD><%=f.label :brewery %>:</TD>
+            <TD><%=f.label :brewery %></TD>
             <TD><%=f.text_field :brewery %></TD>
           </tr>
           <tr>
-            <TD><%=f.label :location %>:</TD>
+            <TD><%=f.label :location %></TD>
             <TD><%=f.text_field :location %></TD>
           </tr>
           <tr>
-            <TD><%=f.label :color %>:</TD>
+            <TD><%=f.label :color %></TD>
             <TD><%=f.text_field :color %></TD>
           </tr>
           <tr>
-            <TD><%=f.label :alcohol %>:</TD>
+            <TD><%=f.label :alcohol %></TD>
             <TD><%=f.text_field :alcohol %></TD>
           </tr>
           <tr>
-            <TD><%=f.label :foam %>:</TD>
+            <TD><%=f.label :foam %></TD>
             <TD><%=f.text_field :foam %></TD>
           </tr>
           <tr>
-            <TD><%=f.label :aroma %>:</TD>
+            <TD><%=f.label :aroma %></TD>
             <TD><%=f.text_field :aroma %></TD>
           </tr>
           <tr>
-            <TD><%=f.label :description %>:</TD>
+            <TD><%=f.label :description %></TD>
             <TD><%=f.text_area :description %></TD>
           </tr>
-
         </tbody>
       </table>
 

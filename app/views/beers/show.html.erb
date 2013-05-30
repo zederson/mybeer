@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h3><%=@beer.name %></h3>
 
   <fieldset>
@@ -8,18 +6,34 @@
         <tbody>
           <tr>
             <TD><%=@beer.style %></TD>
+          </tr>
+          <tr>
             <TD><%=@beer.brewery %></TD>
+          </tr>
+          <tr>
             <TD><%=@beer.location %></TD>
+          </tr>
+          <tr>
             <TD><%=@beer.color %></TD>
+          </tr>
+          <tr>
             <TD><%=@beer.alcohol %></TD>
+          </tr>
+          <tr>
             <TD><%=@beer.foam %></TD>
+          </tr>
+          <tr>
             <TD><%=@beer.aroma %></TD>
-            <TD><%=@beer.description %></TD>
+          </tr>
+          <tr>
+            <TD>
+              <%= text_area_tag :description, @beer.description, :size=> "80x6", :disabled => true%>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <%= f.submit %>
     </div>
   </fieldset>
 
-<%= link_to 'Edit', edit_beer_path(@user) %> |
-<%= link_to 'Back', beers_path %>
+<%= link_to t('links.edit'), edit_beer_path(@beer) %> |
+<%= link_to t('links.back'), beers_path %>
