@@ -1,0 +1,20 @@
+<h1><%= t'.title' %></h1>
+<%= show_errors_tag @session %>
+
+<%= form_for @session do |f|  %>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= error_tag @session, :email %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %> <%= error_tag @session, :password %>
+  </p>
+  <p>
+    <%= f.submit :value => t('layout.signin') %>
+  </p>
+<% end %>
+
+<p><%= link_to t('.sign_up'), new_user_path %> </p>

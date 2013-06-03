@@ -9,6 +9,19 @@
 <body>
 
 <div id="content">
+
+  <header>
+    <div id="header-wrap">
+      <h1><%= link_to "ByBeer", root_path %> </h1>
+
+      <% if user_signed_in? %>
+        <%= render 'layouts/user_navbar' %>
+      <% else %>
+        <%= render 'layouts/visitor_navbar' %>
+      <% end %>
+    </div>
+  </header>
+
   <% if notice.present? %>
     <p id="notice"><%= notice %> </p>
   <% end %>

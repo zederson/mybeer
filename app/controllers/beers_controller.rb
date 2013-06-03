@@ -1,5 +1,8 @@
 class BeersController < ApplicationController
 
+  before_filter :require_authentication, :only => [:new, :edit, :create, :update, :destroy]
+
+
   def index
     @beers = Beer.order(:style, :name)
   end
@@ -27,7 +30,8 @@ class BeersController < ApplicationController
     @beer = Beer.new beer_params
 
     if(@beer.save)
-      redirect_to(beers_url, :notice => "Cerveja #{@beer.name} Criada Com Sucesso!!")
+      # redirect_to(beers_url, :notice => "Cerveja #{@beer.name} Criada Com Sucesso!!")
+      redirect_to @beer, :notice => t('flash.notice.beer_created')
     else
       render :action =>"new"
     end
@@ -37,7 +41,8 @@ class BeersController < ApplicationController
     @beer = Beer.find(params[:id])
 
     if @beer.update_attributes(beer_params)
-      redirect_to(beers_url, :notice => "Cerveja #{@beer.name} Alterada Com Sucesso")
+      # redirect_to(beers_url, :notice => "Cerveja #{@beer.name} Alterada Com Sucesso")
+      redirect_to @beer, :notice => t('flash.notice.beer_updated')
     else
       render :action => "edit"
     end
