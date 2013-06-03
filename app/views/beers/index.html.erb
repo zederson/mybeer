@@ -1,23 +1,5 @@
 <h1><%= t('.title')%></h1>
 
-<table>
-  <tbody>
-    <% @beers.each do |beer| %>
-      <tr>
-        <td>
-          <ul>
-            <li><%= beer.name %></li>
-            <li><%= beer.style %></li>
-          </ul>
-        </td>
-        <td><%= link_to t('links.show'), beer %></td>
-        <td><%= link_to t('links.edit'), edit_beer_path(beer) %></td>
-        <td><%= link_to t('links.destroy'), beer, method: :delete, data: { confirm: t('links.question_destroy') } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<%= render @beers %>
 
 <%= link_to t('.new'), new_beer_path %>

@@ -2,7 +2,9 @@
 
 class User < ActiveRecord::Base
 
-  scope   :most_recent, order('create_at order DESC')
+  has_many :beers
+
+  scope   :most_recent, order('create_at DESC')
 
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true, :format => {:with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}

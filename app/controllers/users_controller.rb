@@ -2,7 +2,6 @@
 class UsersController < ApplicationController
 
   before_filter :can_change, :only => [:edit, :update, :show]
-  before_filter :require_no_authentication, :only => [:new, :create]
   before_filter :require_authentication, :only => [:destroy]
 
   def index

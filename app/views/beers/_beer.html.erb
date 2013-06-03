@@ -1,0 +1,22 @@
+
+  <article class="beer">
+    <h2> <%= link_to beer.name, beer %> </h2>
+    <span class="created">
+      <%= t'.owner_html', :owner => beer.user.name, :when => l(beer.created_at, :format => :short) %>
+    </span>
+    <p>
+      <span class="style">
+        <%= beer.style%>
+      </span>
+    </p>
+    <p><%= beer.description %></p>
+    <% if belongs_to_user beer %>
+      <ul>
+        <li>
+          <%= link_to t('links.edit'), edit_beer_path(beer) %> |
+          <%= link_to t('links.destroy'), beer, method: :delete, data: { confirm: t('links.question_destroy') } %>
+        </li>
+      </ul>
+    <% end %>
+
+  </article>

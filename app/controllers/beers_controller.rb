@@ -2,9 +2,8 @@ class BeersController < ApplicationController
 
   before_filter :require_authentication, :only => [:new, :edit, :create, :update, :destroy]
 
-
   def index
-    @beers = Beer.order(:style, :name)
+    @beers = Beer.most_recent.order(:style, :name)
   end
 
   def show
@@ -12,25 +11,24 @@ class BeersController < ApplicationController
   end
 
   def new
-    @beer = Beer.new
+    @beer = current_user.beers.build
   end
 
   def edit
-    @beer = Beer.find(params[:id])
+    @beer = current_user.beers.find(params[:id])
   end
 
   def destroy
-    @beer = Beer.find(params[:id])
+    @beer = current_user.beers.find(params[:id])
     @beer.destroy
 
-    redirect_to(beers_url, :notice => "Cerveja excluida Com Sucesso")
+    redirect_to(beers_url, :notice => t('flash.notice.destroy'))
   end
 
   def create
-    @beer = Beer.new beer_params
+    @beer = current_user.beers.build beer_params
 
     if(@beer.save)
-      # redirect_to(beers_url, :notice => "Cerveja #{@beer.name} Criada Com Sucesso!!")
       redirect_to @beer, :notice => t('flash.notice.beer_created')
     else
       render :action =>"new"
@@ -38,19 +36,18 @@ class BeersController < ApplicationController
   end
 
   def update
-    @beer = Beer.find(params[:id])
+    @beer = current_user.beers.find(params[:id])
 
     if @beer.update_attributes(beer_params)
-      # redirect_to(beers_url, :notice => "Cerveja #{@beer.name} Alterada Com Sucesso")
-      redirect_to @beer, :notice => t('flash.notice.beer_updated')
+      redirect_to @beer, :notice => t('flash.notice.updated')
     else
       render :action => "edit"
     end
   end
 
-private
-  def beer_params
-    params.require(:beer).permit(:name, :style, :description, :brewery, :location, :color, :alcohol, :foam, :aroma)
-  end
+  private
+    def beer_params
+      params.require(:beer).permit(:name, :style, :description, :brewery, :location, :color, :alcohol, :foam, :aroma)
+    end
 
 end
