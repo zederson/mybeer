@@ -1,7 +1,9 @@
 Mybeers::Application.routes.draw do
 
   resources :users
-  resources :beers
+  resources :beers do
+    resources :reviews, :only => [:create, :update], :modulo => :beers
+  end
 
   resource :user_sessions, :only => [:create, :new, :destroy]
 

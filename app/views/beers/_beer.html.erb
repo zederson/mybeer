@@ -1,9 +1,27 @@
 
   <article class="beer">
     <h2> <%= link_to beer.name, beer %> </h2>
+
     <span class="created">
       <%= t'.owner_html', :owner => beer.user.name, :when => l(beer.created_at, :format => :short) %>
     </span>
+
+    <p>
+      <%= t '.stats', :average => beer.reviews.stars, :max => beer.reviews.review_points, :count => beer.reviews.size %>
+    </p>
+
+    <p>
+      <% beer.stars.times do %>
+        <span class="star filled_star"></span>
+      <% end %>
+
+      <% (beer.reviews.review_points - beer.stars).times do %>
+        <span class="star empty_star"></span>
+      <% end %>
+
+      <%= t '.stars', :count => beer.reviews_count %>
+    </p>
+
     <p>
       <span class="style">
         <%= beer.style%>

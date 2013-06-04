@@ -1,0 +1,24 @@
+<section class="review">
+  <% if user_signed_in? %>
+
+    <%= form_for [review.beer, review], :remote => true do |f| %>
+
+      <% Review::POINTS.each do |point| %>
+
+        <%= f.radio_button :point, point %>
+
+        <%= f.label :point, point, :value => point do %>
+          <i class="icon-star"></i>
+        <% end %>
+      <% end %>
+
+      <%= f.submit %>
+    <% end %>
+
+  <% else %>
+    <span class="login_required">
+      <%= t('.login_to_review')%>
+    </span>
+  <% end %>
+
+</section>

@@ -3,6 +3,7 @@
 class User < ActiveRecord::Base
 
   has_many :beers
+  has_many :reviews
 
   scope   :most_recent, order('create_at DESC')
 

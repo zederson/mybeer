@@ -1,5 +1,7 @@
 <h3><%=@beer.name %></h3>
 
+  <%= render :partial => 'review', :object => @user_review %>
+
   <fieldset>
     <div class="actions">
       <table>

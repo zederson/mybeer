@@ -18,6 +18,17 @@ pt-BR:
       title: Alterar Cerveja
     beer:
       owner_html: '&mdash; %{owner} (%{when})'
+      stats:
+        zero: 'Não há avaliações'
+        one: '%{average}/%{max} (1 avaliação)'
+        other: '%{average}/%{max} (%{count} avaliações)'
+      stars:
+        one: '(1 avaliação)'
+        other: '(%{count} avaliações)'
+
+    review:
+      login_to_review: 'Faça o Login Para Avaliar as Cervejas'
+
 
   user_sessions:
     new:
@@ -57,6 +68,7 @@ pt-BR:
     models:
       beer: Cerveja
       user: Usuário
+      review: Avaliação
 
     attributes:
       user:
